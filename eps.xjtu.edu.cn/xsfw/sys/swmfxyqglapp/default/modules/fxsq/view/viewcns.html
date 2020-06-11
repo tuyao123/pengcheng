@@ -1,0 +1,13 @@
+<mt-layout-container class="addfxsq_cns">
+    <div class="" style="background-color: white; height: calc(100vh);">
+        <div style="padding: 20px;">
+            <mt-text class="cns_title">承诺书</mt-text>
+            <mt-text v-html="settingInfo.CNS" class="cns_nr xssq_html_fwb">{{settingInfo.CNS}}</mt-text>
+        </div>
+        <div style="padding: 0 20px;" class="cns_tip">对申请书中所填内容真实性的承诺，对健康每日报中所填内容真实性的承诺，以及返校过程中和返校后严格遵守学校相关规定的承诺。</div>
+
+        <div style="height: 100px;padding-top: 80px;">
+            <mt-button @click="sureCns" class="cns_sure_btn">确定</mt-button>
+        </div>
+    </div>
+</mt-layout-container>

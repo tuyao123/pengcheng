@@ -1,0 +1,51 @@
+<mt-layout-container class="pk6sr0r2v" style="margin-bottom: 50px;" v-show="showPage">
+    <mt-layout-container v-show="$route.query.isSelect != '1'">
+        <emapm-form :model="xcxxModel" v-model="formValue" ref="form" :readonly="readonly" style="">
+            <div slot="SFYSXRY" style="margin-left: -20px;">
+            </div>
+        </emapm-form>
+
+        <mt-layout-container>
+            <div style="padding: 12px 20px 12px;font-size: 14px;line-height: 20px;color: #92969C;">行程信息</div>
+            <div style="color:#f26666;font-size: 12px;line-height: 15px;padding-left:20px;">请详细录入从家出发到进校的每一段行程安排。</div>
+            <div v-for="xcxx,index in xcxxArr">
+                <div style="font-size: 13px;color: #333333;padding-left:20px;line-height: 50px;background-color: white;">行程信息-{{index+1}}
+                    <span @click="delXcxx(xcxx.WID)" style="float: right;margin-right: 20px;color: #2e8cf0;line-height: 50px;background-color: white;">删除</span>
+                </div>
+                <emapm-form :model="xcxx.model" v-model="xcxx" :ref="xcxx.form" :readonly="xcxxreadonly">
+                    <div slot="JTFS" @click="selectJtfs(xcxx.WID)" style="line-height: 50px;border-top: 1px solid #efefef;">
+                        <i class="slot-mint-cell-require"></i>
+                        <span>交通方式</span>
+                        <span style="display: inline-block;margin-left: 20px;width: calc(100vw - 153px);">{{xcxx.JTFS_DISPLAY}}</span>
+                        <div style="display: inline-block;vertical-align: top;">
+                            <mt-icon size="20px" name="icon-keyboardarrowright" class="bh-color-gray-3 xgtxbr">
+                            </mt-icon>
+                        </div>
+                    </div>
+                </emapm-form>
+            </div>
+            <div @click="addXcxx" style="color: #52C7CA;text-align: center;line-height: 50px;background-color: white;">添加行程信息</div>
+        </mt-layout-container>
+
+        <mt-layout-container>
+            <div style="padding: 12px 20px 12px;font-size: 14px;line-height: 20px;color: #92969C;">随行人员</div>
+            <div v-for="sxry,index in sxryArr">
+                <div style="font-size: 13px;color: #333333;padding-left:20px;line-height: 50px;background-color: white;">随行人员-{{index+1}}
+                </div>
+                <emapm-form :model="sxry.model" v-model="sxry" ref="sxry.form" :readonly="readonly">
+                </emapm-form>
+            </div>
+        </mt-layout-container>
+        <emapm-form :model="jtpjModel" v-model="formValue" ref="form" :readonly="readonly">
+        </emapm-form>
+        <emapm-form :model="fxhbcxxModel" v-model="formValue" ref="fxhbcxxform" :readonly="fxhbcxxreadonly">
+        </emapm-form>
+        <div style="height: 100px; padding: 20px 0;">
+            <mt-button @click="sureFxxc" class="fxxc_sure_btn">确定</mt-button>
+        </div>
+    </mt-layout-container>
+
+    <div v-if="$route.query.isSelect=='1'">
+        <jtfs-select :options="options" @gotoParent="gotoParent"></jtfs-select>
+    </div>
+</mt-layout-container>

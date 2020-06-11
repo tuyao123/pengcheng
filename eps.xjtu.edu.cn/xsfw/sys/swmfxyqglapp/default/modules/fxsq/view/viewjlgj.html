@@ -1,0 +1,27 @@
+<mt-layout-container class="addfxsq_cns">
+    <div style="padding: 0 20px;background-color: white;">
+        <div class="addfxsq_jvgj14_title">近14天居旅轨迹</div>
+        <div style="background-color: #dfedfb;">
+            <div class="addfxsq_jvgj14_title2qqq">日期</div>
+            <div class="addfxsq_jvgj14_title2qqq">居旅地</div>
+        </div>
+        <div v-for="jlinfo in jlTemList">
+            <div class="addfxsq_jvgj14_title3er">{{jlinfo.RQ}}</div>
+            <div class="addfxsq_jvgj14_title3er">{{jlinfo.SZD_DISPLAY}}</div>
+        </div>
+        <div style="padding-bottom:10px;">
+            <div v-show="jlTemList.length == 3" @click="openJljl" class="addfxsq_jvgj14_openclose">展开全部</div>
+            <div v-show="jlTemList.length == 14" @click="closeJljl" class="addfxsq_jvgj14_openclose">收起</div>
+        </div>
+    </div>
+
+    <div>
+        <div style="padding-left: 20px;margin-top: 10px;background-color: white;" class="addfxsq_jvgj14_title">其他信息</div>
+        <emapm-form :model="model" v-model="jlValue" :custom-vm="customVm" ref="form" :readonly="readonly">
+        </emapm-form>
+    </div>
+
+    <div style="height: 100px; padding: 20px 0;">
+        <mt-button @click="sureJlinfo" class="cns_sure_btn">确定</mt-button>
+    </div>
+</mt-layout-container>

@@ -1,0 +1,150 @@
+<mt-layout-container class="fxyq_fxsq fxyq_wcsq">
+    <mt-layout-container>
+
+        <div :class="{ 'sq-xslbdm-bks':settingInfo.XSLBDM=='3','sq-xslbdm-yjs' :settingInfo.XSLBDM=='2', 'sq-xslbdm-lxs':settingInfo.XSLBDM=='5'}">
+            <mt-layout-container class="bh-bg-color-light xszp_image">
+                <mt-image :src="settingInfo|autoPhoto" style="width:100px;height:130px; margin: 3px;" :watermark="false">
+                </mt-image>
+            </mt-layout-container>
+            <div class="xsxx" style="width: calc(100vw - 160px);">
+                <div class="">{{settingInfo.XH}}&nbsp;{{settingInfo.XM}}
+                    <span style="font-size: 14px;margin-left: 10px;">{{settingInfo.XSLBDM_DISPLAY}}</span>
+                </div>
+                <div class="">{{settingInfo.DWDM_DISPLAY}}/{{settingInfo.BJDM_DISPLAY}}</div>
+            </div>
+        </div>
+
+        <mt-layout-container class="modal-bak" v-show="showPage == '0'">
+            <mt-text style="text-align:center;font-size: 18px;color: #13152D;line-height: 22px;padding-top: 20px;">
+                <mt-icon size="30px" name="icon-erroroutline" class="" style="color: red;position: relative;top: 3px;">
+                </mt-icon>
+                未安排返校
+            </mt-text>
+            <mt-text style="font-size: 14px;color: #767A8C;line-height: 20px;padding: 30px;text-align: center;">学校暂未安排您进行返校，请耐心等待学校安排!</mt-text>
+        </mt-layout-container>
+
+        <mt-layout-container class="" v-show="showPage == '1'">
+            <div class="" style="background-color:white;padding-bottom: 100px;min-height: 500px;">
+                <div style="padding: 10px 0 0 25px;">
+                    <div class="jkmgxsj-title">当前时间：</div>
+                    <div><span class="jkmgxsj-rq">{{sjrq}}</span> <span class="jkmgxsj-sj">{{sjsj}}</span></div>
+                </div>
+                <div v-show="(settingInfo.isOutSchool && settingInfo.JKZT == '3' && settingInfo.isBmd)|| changeToPurple" style="line-height:30px;padding-top: 4px;padding-left:25px;font-size: 14px;">
+                    外出时间
+                    <span style="color:#ffb950;">{{settingInfo.YJWCSJ}}</span>
+                    <span v-show="settingInfo.YJWCSJ != settingInfo.YJFHSJ">至</span>
+                    <span v-show="settingInfo.YJWCSJ != settingInfo.YJFHSJ" style="color:#ffb950;">{{settingInfo.YJFHSJ}}</span>
+                </div>
+                <mt-text style="line-height:20px;">&nbsp;&nbsp;</mt-text>
+                <div style="border: 1px solid #e8e8e8;width: 250px;height: 240px;margin-left: calc(50vw - 130px);margin-bottom:8px;position: relative;">
+                    <div style="width:170px;height:170px;display: inline-block;margin: 40px 40px 20px 40px;">
+                        <div id="apply_school_code" style="margin:10px;"></div>
+                    </div>
+                    <div style="position: absolute;top: 0;" v-show="settingInfo.XSLBDM=='3'">
+                        <mt-image src="../public/images/xsjkm_bg.png" style="height: 30px;" :watermark="false">
+                        </mt-image>
+                    </div>
+                    <div style="position: absolute;top: 0;" v-show="settingInfo.XSLBDM=='2'">
+                        <mt-image src="../public/images/xsjkm_bg1.png" style="height: 30px;" :watermark="false">
+                        </mt-image>
+                    </div>
+                    <div style="position: absolute;top: 0;" v-show="settingInfo.XSLBDM=='5'">
+                        <mt-image src="../public/images/xsjkm_bg2.png" style="height: 30px;" :watermark="false">
+                        </mt-image>
+                    </div>
+                    <div style="position: absolute;top: 0;line-height: 31px;font-size: 16px;color: white;left: 35px;">
+                        {{settingInfo.XSLBDM_DISPLAY}}
+                    </div>
+                </div>
+                <mt-text v-if="settingInfo.JKZT == '1'" style="font-size: 14px;color: #767A8C;line-height: 20px;padding: 10px;text-align: center;">红码不允许返校，请联系辅导员！</mt-text>
+                <mt-text v-if="settingInfo.JKZT == '1'" style="font-size: 14px;color: #FF7949;line-height: 20px;text-align: center;">
+                    {{settingInfo.redMsg}}
+                    <mt-text @click="viewMsgDetail()" style="font-size: 14px;color: #0070C0;line-height: 20px;display:inline-block;">(详情)</mt-text>
+                </mt-text>
+                <mt-text v-if="settingInfo.JKZT == '2'" style="font-size: 14px;color: #E6A400;line-height: 20px;text-align: center;">
+                    {{settingInfo.yellowMsg}}
+                    <mt-text @click="viewMsgDetail()" style="font-size: 14px;color: #0070C0;line-height: 20px;display:inline-block;">(详情)</mt-text>
+                </mt-text>
+                <mt-text v-if="settingInfo.JKZT != '3' && settingInfo.YCYY == '数据不完整'" style="font-size: 12px;color: #E6A400;padding-top:2px;line-height: 20px;text-align: center;">
+                    (返校提交前在返校申请时补充，其他时候在健康大厅中补充)
+                </mt-text>
+                <div v-show="(settingInfo.isOutSchool && settingInfo.JKZT == '3' && settingInfo.isBmd)|| changeToPurple" style="padding-top:0px;text-align:center;font-size: 14px;">
+                    校园最安全，外出有风险
+                </div>
+                <div v-show="((settingInfo.isOutSchool && settingInfo.JKZT == '3' && settingInfo.isBmd)|| changeToPurple)&& settingInfo.WCYYLB_DIS != ''" style="padding-top:2px;text-align:center;font-size: 14px;">
+                    {{settingInfo.WCYYLB_DIS}}
+                </div>
+                <mt-text v-show="!settingInfo.isOutSchool && !changeToPurple" class="header" style="padding-top:30px;">初始校园码</mt-text>
+            </div>
+        </mt-layout-container>
+
+        <mt-layout-container class="OPjczlssvm" v-show="showPage == '2'">
+            <div v-show="showPage == '2'" style="background-color:white;padding-bottom: 100px;min-height: 500px;">
+                <div style="padding: 10px 0 0 25px;">
+                    <div class="jkmgxsj-title">当前时间：</div>
+                    <div><span class="jkmgxsj-rq">{{sjrq}}</span> <span class="jkmgxsj-sj">{{sjsj}}</span></div>
+                </div>
+                <div v-show="(settingInfo.SHZT =='99'  && settingInfo.SFJX !='1' && settingInfo.JKZT != '1')" style="line-height:30px;padding-top: 4px;padding-left:25px;;font-size: 12px;">
+                    尚未完成报到登记，请于
+                    <span style="color:#ffb950;">{{settingInfo.FXKSRQ}}</span>
+                    <span v-show="settingInfo.FXKSRQ != settingInfo.FXJZRQ">至</span>
+                    <span v-show="settingInfo.FXKSRQ != settingInfo.FXJZRQ" style="color:#ffb950;">{{settingInfo.FXJZRQ}}</span> 到校报到
+                </div>
+                <div v-show="(settingInfo.SFJX =='1')" style="line-height:30px;padding-top: 8px;padding-left:25px;;font-size: 14px;">
+                    已于&nbsp;{{settingInfo.JXSJ}}&nbsp;完成报到登记
+                </div>
+                <div v-show="(settingInfo.isOutSchool && settingInfo.JKZT == '3' && (settingInfo.SFJX =='1'||settingInfo.isBmd))|| changeToPurple" style="line-height:30px;padding-top: 4px;padding-left:25px;font-size: 14px;">
+                    外出时间
+                    <span style="color:#ffb950;">{{settingInfo.YJWCSJ}}</span>
+                    <span v-show="settingInfo.YJWCSJ != settingInfo.YJFHSJ">至</span>
+                    <span v-show="settingInfo.YJWCSJ != settingInfo.YJFHSJ" style="color:#ffb950;">{{settingInfo.YJFHSJ}}</span>
+                </div>
+                <mt-text v-show="(settingInfo.SFJX !='1' && settingInfo.SHZT !='99')" style="line-height:30px;">&nbsp;&nbsp;</mt-text>
+                <mt-text v-show="(settingInfo.SFJX =='1' || settingInfo.SHZT =='99')" style="line-height:5px;">&nbsp;&nbsp;</mt-text>
+                <div style="border: 1px solid #e8e8e8;width: 250px;height: 240px;margin-left: calc(50vw - 130px);margin-bottom:8px;position: relative;">
+                    <div style="width:170px;height:170px;display: inline-block;margin: 40px 40px 20px 40px;">
+                        <div id="applyed_school_code" style="margin:10px;"></div>
+                    </div>
+                    <div style="position: absolute;top: 0;" v-show="settingInfo.XSLBDM=='3'">
+                        <mt-image src="../public/images/xsjkm_bg.png" style="height: 30px;" :watermark="false">
+                        </mt-image>
+                    </div>
+                    <div style="position: absolute;top: 0;" v-show="settingInfo.XSLBDM=='2'">
+                        <mt-image src="../public/images/xsjkm_bg1.png" style="height: 30px;" :watermark="false">
+                        </mt-image>
+                    </div>
+                    <div style="position: absolute;top: 0;" v-show="settingInfo.XSLBDM=='5'">
+                        <mt-image src="../public/images/xsjkm_bg2.png" style="height: 30px;" :watermark="false">
+                        </mt-image>
+                    </div>
+                    <div style="position: absolute;top: 0;line-height: 31px;font-size: 16px;color: white;left: 35px;">
+                        {{settingInfo.XSLBDM_DISPLAY}}
+                    </div>
+                </div>
+                <mt-text v-if="settingInfo.SFJX !='1' && settingInfo.SFQC != '1' && settingInfo.JKZT == '1'" style="font-size: 14px;color: #767A8C;line-height: 20px;padding: 10px;text-align: center;">红码不允许返校，请联系辅导员！</mt-text>
+                <mt-text v-if="settingInfo.JKZT == '1'" style="font-size: 14px;color: #FF7949;line-height: 20px;text-align: center;">
+                    {{settingInfo.redMsg}}
+                    <mt-text @click="viewMsgDetail()" style="font-size: 14px;color: #0070C0;line-height: 20px;display:inline-block;">(详情)</mt-text>
+                </mt-text>
+                <mt-text v-if="settingInfo.JKZT == '2'" style="font-size: 14px;color: #E6A400;line-height: 20px;text-align: center;">
+                    {{settingInfo.yellowMsg}}
+                    <mt-text @click="viewMsgDetail()" style="font-size: 14px;color: #0070C0;line-height: 20px;display:inline-block;">(详情)</mt-text>
+                </mt-text>
+                <mt-text v-if="settingInfo.JKZT != '3' && settingInfo.YCYY == '数据不完整'" style="font-size: 12px;color: #E6A400;padding-top:2px;line-height: 20px;text-align: center;">
+                    (返校提交前在返校申请时补充，其他时候在健康大厅中补充)
+                </mt-text>
+                <div v-show="(settingInfo.isOutSchool && settingInfo.JKZT == '3' && (settingInfo.SFJX =='1'||settingInfo.isBmd))|| changeToPurple" style="padding-top:0px;text-align:center;font-size: 14px;">
+                    校园最安全，外出有风险
+                </div>
+                <div v-show="((settingInfo.isOutSchool && settingInfo.JKZT == '3' && (settingInfo.SFJX =='1'||settingInfo.isBmd))|| changeToPurple)&& settingInfo.WCYYLB_DIS != ''" style="padding-top:2px;text-align:center;font-size: 14px;">
+                    {{settingInfo.WCYYLB_DIS}}
+                </div>
+                <div v-show="(settingInfo.SHZT =='99' && settingInfo.SFJX !='1' && settingInfo.JKZT != '1')" style="padding-top:2px;text-align:center;font-size: 14px;color: #92969C;margin-bottom: 20px;">
+                    请到校后向学校办理人员出示此二维码
+                </div>
+            </div>
+        </mt-layout-container>
+
+    </mt-layout-container>
+
+</mt-layout-container>

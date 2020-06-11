@@ -1,0 +1,71 @@
+<mt-layout-container class="pk6sr0r2v" style="margin-bottom: 50px;" v-show="showPage">
+    <emapm-form :model="model" v-model="formValue" ref="form" :readonly="readonly" v-show="modelFlag == '2'">
+        <div slot="SFFRHKS">
+            <i class="slot-mint-cell-require"></i>
+            <mt-switcher label="今日本人是否身体不适（包括发烧、干咳、乏力）" v-model="sffrhks" @change="handleChange1" class="switcher-cell">
+            </mt-switcher>
+        </div>
+        <div slot="SFQGJCHB">
+            <i class="slot-mint-cell-require"></i>
+            <mt-switcher label="本人或家属是否有疫区人员接触史" v-model="sfqcjchb" @change="handleChange2" class="switcher-cell">
+            </mt-switcher>
+        </div>
+        <div slot="SFJCQZ">
+            <i class="slot-mint-cell-require"></i>
+            <mt-switcher label="本人或家属是否与疑似或确诊患者接触过" v-model="sfjcqz" @change="handleChange3" class="switcher-cell">
+            </mt-switcher>
+        </div>
+        <div slot="SFQZHYS">
+            <i class="slot-mint-cell-require"></i>
+            <mt-switcher label="本人或家属是否为疑似病例或有确诊病例" v-model="sfqzhys" @change="handleChange4" class="switcher-cell">
+            </mt-switcher>
+        </div>
+        <div slot="SFBGL">
+            <i class="slot-mint-cell-require"></i>
+            <mt-switcher label="本人或家属是否被居家隔离或医学隔离" v-model="sfbgl" @change="handleChange5" class="switcher-cell">
+            </mt-switcher>
+        </div>
+        <div slot="JKZM" v-if="sftoon">
+            <div class="emapm-item">
+                <div data-v-615b2308="" data-v-a912844a="" class="bh-upload-wrap emapm-uploa-imgs" value-align="normal">
+                    <a data-v-615b2308="" class="mint-cell mt-bg-white mt-bColor-grey-lv5 is-vertical mint-uploadimgs">
+
+                        <div class="mint-cell-left"></div>
+                        <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line" style="padding-right: 20px;">
+                            <div class="mint-cell-title" style="flex: 1 1 96px; min-width: 96px;">
+                                <span class="mint-cell-text mt-color-grey">健康证明</span>
+                            </div>
+                            <div class="mint-cell-value mt-color-grey" style="flex: 1 1 calc(100% - 96px);">
+                                <span style="line-height: initial; word-break: break-all;"></span>
+                            </div>
+
+                        </div>
+                        <div class="mint-cell-right"></div>
+                    </a>
+                    <div data-v-615b2308="" v-show="zpdataReady">
+                        <div data-v-615b2308="" class="upload_item" v-for="imgobj in imglist">
+                            <i data-v-615b2308="" class="iconfont icon-weiwancheng cancel_upload_img" @click="delUploadImg(imgobj.fileWid)"></i>
+                            <a data-v-615b2308="" v-if="!imgobj.isImage" :href="imgobj.fileUrl">
+								<i data-v-615b2308="" class="iconfont icon-others color-others" style="font-size: 75px;"></i>
+							</a>
+                            <img data-v-615b2308="" v-if="imgobj.isImage" :src="imgobj.fileUrl" alt="" class="upload_img">
+                        </div>
+                        <div data-v-615b2308="" class="upload_item" @click="onUploadImg">
+                            <img data-v-615b2308="" src="data:image/png;base64,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"
+                                alt="无" class="upload_img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </emapm-form>
+
+    <emapm-form :model="model3" v-model="formValue" ref="form3" :readonly="readonly" v-show="modelFlag == '3'">
+    </emapm-form>
+
+    <emapm-form :model="model2" v-model="formValue" ref="form2" :readonly="readonly" v-show="modelFlag == '1'">
+    </emapm-form>
+    <div style="height: 100px; padding: 20px 0;">
+        <mt-button @click="sureMrqk" class="fxxc_mrqksure_btn" v-show="!readonly">保存并提交</mt-button>
+    </div>
+</mt-layout-container>

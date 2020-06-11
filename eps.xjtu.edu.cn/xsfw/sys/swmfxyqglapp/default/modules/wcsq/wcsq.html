@@ -1,0 +1,163 @@
+<mt-layout-container class="fxyq_fxsq fxyq_wcsq">
+    <mt-layout-container class="cant-wcsq" v-show="showPage == '0'">
+        <div>
+            <img alt="" src="../public/images/iconkong.png" style="width:200px;">
+            <div style="margin-top: 10px;color:#ff7949;">当前无法进行外出申请!</div>
+            <div style="margin-top: 6px;font-size: 14px;color: #c3bebe;">当前未返校或不符合外出申请条件</div>
+        </div>
+        <div class="xs-wc-tips" style="text-align: left;">
+            <p style="color:#999;font-size:16px;">申请要求</p>
+            <p style="margin-top:10px;font-size: 14px;">1.返校申请通过并且校园码为绿色</p>
+            <p style="margin-top:10px;font-size: 14px;">2.学校特别许可并且校园码为绿色</p>
+            <p style="color:#999;font-size:16px;margin-top:10px">咨询帮助</p>
+            <p style="margin-top:10px;font-size: 14px;">业务问题请先联系辅导员，技术问题请进群</p>
+            <p style="margin-top:10px;font-size: 14px;">电话：郭老师，82668827转809或18092920310</p>
+            </br>
+            <img src="../public/images/wczxbz.png" style="margin-left: calc(50vw - 123px);"></img>
+        </div>
+    </mt-layout-container>
+    <mt-layout-container class="" v-show="showPage == '1' || showPage == '2' || showPage == '3' || showPage == '4'">
+        <mt-layout-container class="pjwvpma57">
+            <mt-navbar v-model="showTab" :fixed="false">
+                <mt-tab-item id="wcsq" componentname="navbar">外出申请</mt-tab-item>
+                <mt-tab-item id="wcjl" componentname="navbar">申请记录</mt-tab-item>
+            </mt-navbar>
+            <mt-tab-container v-model="showTab" :swipeable="false">
+                <mt-tab-container-item id="wcsq">
+                    <!-- 申请页面 -->
+                    <!-- 申请表单页 -->
+                    <div v-show="showPage == '1'" class="wcsq-tab-content">
+                        <div v-show="settingInfo.THZT == '1'" class="wcsq-warning-area">申请已退回，退回原因：{{THYY}}</div>
+                        <emapm-form :model="wcsqModel" v-model="formValue" :custom-vm="customVm" ref="wcsqform" :readonly="readonly">
+                        </emapm-form>
+                        <mt-button @click="applyWcsq" class="fxyq_fxsq_btn" style="margin-top:50px;">提交</mt-button>
+                    </div>
+
+                    <div v-show="showPage == '2'" class="wcsq-tab-content">
+                        <!-- <mt-image src="../public/images/shz.png" style="margin-top:30px;margin-top:20px;margin-left: calc(50vw - 88px);" :watermark="false">
+					     </mt-image>
+					     <mt-text style="font-size: 16px;color: #FFB950;text-align: center;margin-bottom: 50px;">审核中</mt-text> -->
+                        <apply-process :processDatas="applyProcessDatas" :currentState="applyDetailShzt" :sqsj="applyDetailSqsj" :thzt="applyDetailThzt" :sfkch="applyDetailSfkch"></apply-process>
+                        <mt-button @click="recallWcsqApply" class="fxyq_fxsq_btn" style="margin-top:50px;">撤回</mt-button>
+                    </div>
+
+                    <div v-show="showPage == '3'" class="wcsq-tab-content">
+                        <div :class="{ 'sq-xslbdm-bks':settingInfo.XSLBDM=='3','sq-xslbdm-yjs' :settingInfo.XSLBDM=='2', 'sq-xslbdm-lxs':settingInfo.XSLBDM=='5'}">
+                            <mt-layout-container class="bh-bg-color-light xszp_image">
+                                <mt-image :src="settingInfo|autoPhoto" style="width:100px;height:130px; margin: 3px;" :watermark="false">
+                                </mt-image>
+                            </mt-layout-container>
+                            <div class="xsxx" style="width: calc(100vw - 160px);">
+                                <div class="">{{settingInfo.XH}}&nbsp;{{settingInfo.XM}}
+                                    <span style="font-size: 14px;margin-left: 10px;">{{settingInfo.XSLBDM_DISPLAY}}</span>
+                                </div>
+                                <div class="">{{settingInfo.DWDM_DISPLAY}}/{{settingInfo.BJDM_DISPLAY}}</div>
+                            </div>
+                        </div>
+                        <div class="wcsq-erm-bottom">
+                            <mt-button @click="toReapply" class="fxyq_fxsq_btn1" style="display:inline-block">申请</mt-button>
+                        </div>
+                        <div class="" style="height:10px;background-color:#F5F5F5;"></div>
+                        <div style="border-bottom: 1px solid #efefef;">
+                            <!-- <mt-image :watermark="false" src="../public/images/wcsj.png" style="display: inline-block;width: 16px;vertical-align: bottom;"></mt-image> -->
+                            <div class="xs-kwcsq-sd">
+                                <div class="xs-kwcsq-label">外出时间段:</div>
+                                <div class="xs-kwcsq-time">
+                                    <span class="xs-kwcsq-time-info" v-for="wc in settingInfo.WCLIST" v-if="!SFZW">{{wc.WCSD}}</span>
+                                    <span class="xs-kwcsq-time-info" v-if="SFZW">暂无</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="xs-wc-tips">
+                            <p style="color:#999;font-size:16px;">申请要求</p>
+                            <p style="margin-top:10px;font-size: 14px;">1.返校申请通过并且校园码为绿色</p>
+                            <p style="margin-top:10px;font-size: 14px;">2.学校特别许可并且校园码为绿色</p>
+                            <p style="color:#999;font-size:16px;margin-top:10px">咨询帮助</p>
+                            <p style="margin-top:10px;font-size: 14px;">业务问题请先联系辅导员，技术问题请进群</p>
+                            <p style="margin-top:10px;font-size: 14px;">电话：郭老师，82668827转809或18092920310</p>
+                            </br>
+                            <img src="../public/images/wczxbz.png" style="margin-left: calc(50vw - 123px);"></img>
+                        </div>
+
+                    </div>
+                    <div v-show="showPage == '4'" class="wcsq-tab-content" style="margin-top:10px;">
+                        <apply-process :processDatas="applyProcessDatas" :currentState="applyDetailShzt" :sqsj="applyDetailSqsj" :thzt="applyDetailThzt" :sfkch="applyDetailSfkch"></apply-process>
+                        <mt-button @click="toReapply" class="fxyq_fxsq_btn" style="margin-top:50px;">申请</mt-button>
+                    </div>
+
+                </mt-tab-container-item>
+
+                <mt-tab-container-item id="wcjl">
+                    <!-- 申请记录-->
+                    <mt-layout-container class="pk1itqqpj pk6sm8biv" v-show="showList">
+                        <mt-layout-container id="scroll_container" class="" v-infinite-scroll="loadMoreData" :infinite-scroll-disabled="loading" infinite-scroll-distance="20">
+
+                            <mt-layout-container class="bh-bg-color-light OPk1iu6ki2" v-for="data in WCSQ_LIST">
+                                <mt-layout-container>
+                                    <mt-layout-container>
+                                        <mt-layout-container class="OPk1iu6ki3">
+                                            <mt-image :watermark="false" src="../public/images/rl.png" class="OPk1iu6ki5">
+                                            </mt-image>
+                                            <mt-text type="default" class="OPk1iu6ki6">{{data.WCSJ}}</mt-text>
+                                        </mt-layout-container>
+                                        <mt-layout-container style="margin-top:10px;">
+                                            <mt-image :watermark="false" src="../public/images/time.png" class="wcsq-list-tb">
+                                            </mt-image>
+                                            <mt-text type="default" class="OPk1iu6kiij">预计外出时间：</mt-text>
+                                            <mt-text type="default" class="OPk1iu6kiie">{{data.YJWCSJ}}</mt-text>
+                                        </mt-layout-container>
+                                        <mt-layout-container style="margin-top:10px;">
+                                            <mt-image :watermark="false" src="../public/images/time.png" class="wcsq-list-tb">
+                                            </mt-image>
+                                            <mt-text type="default" class="OPk1iu6kiij">预计返回时间：</mt-text>
+                                            <mt-text type="default" class="OPk1iu6kiie">{{data.YJFHSJ}}</mt-text>
+                                        </mt-layout-container>
+                                        <mt-layout-container style="margin-top:10px;">
+                                            <mt-image :watermark="false" src="../public/images/qz.png" class="wcsq-list-tb">
+                                            </mt-image>
+                                            <mt-text type="default" class="OPk1iu6kiij">目的地：</mt-text>
+                                            <mt-text type="default" class="OPk1iu6kiie">{{data.MDD}}</mt-text>
+                                        </mt-layout-container>
+                                    </mt-layout-container>
+                                    <mt-layout-container class="OPk6sppiq1u  wcsq-list-shnr" v-if="data.SHZT == '99'">
+                                        <mt-badge type="primary" size="small" class="sjakuc6ex OCk6sppiodq OPk6sppio7d wcsq-list-shtb">
+                                        </mt-badge>
+                                        <mt-text type="default" class="sjaky9s9n OPk6sppiobt OPk6sppiocq wcsq-list-shtxt">{{data.SHZT_DISPLAY}}</mt-text>
+                                    </mt-layout-container>
+                                    <mt-layout-container class="OCk6somvcoq wcsq-list-shnr" v-else-if="data.SHZT < 0">
+                                        <mt-badge type="primary" size="small" class="bh-bg-color-red sjakuc6ex OCk6somvcj OPk6sop1z2 wcsq-list-shtb">
+                                        </mt-badge>
+                                        <mt-text type="default" class="bh-color-red sjaky9s9n OPk6somvck OPk6sop1z5q wcsq-list-shtxt">{{data.SHZT_DISPLAY}}</mt-text>
+                                    </mt-layout-container>
+                                    <mt-layout-container class="OCk6somvcoq  wcsq-list-shnr" v-else-if="data.SHZT == '0'">
+                                        <mt-badge type="primary" size="small" class="bh-bg-color-gray-3 sjakuc6ex OCk6somvcj OPk6sop1z2 wcsq-list-shtb">
+                                        </mt-badge>
+                                        <mt-text type="default" class="bh-color-gray-3 sjaky9s9n OPk6somvck OPk6sop1z5q wcsq-list-shtxt">{{data.SHZT_DISPLAY}}</mt-text>
+                                    </mt-layout-container>
+                                    <mt-layout-container class="OCk6somvcoq  wcsq-list-shnr" v-else>
+                                        <mt-badge type="primary" size="small" class="sjakuc6ex OCk6spoj0sp OPk6spoj13i wcsq-list-shtb">
+                                        </mt-badge>
+                                        <mt-text type="default" class="sjaky9s9n OCk6spoj26e OPk6spoj1fs wcsq-list-shtxt">{{data.SHZT_DISPLAY}}</mt-text>
+                                    </mt-layout-container>
+                                </mt-layout-container>
+                            </mt-layout-container>
+
+                            <mt-layout-container v-show="!hasWcsqData" style="margin-top:100px;text-align:center;">
+                                <mt-image :watermark="false" src="../public/images/iconkong.png" style="height:120px;">
+                                </mt-image>
+                                <mt-text type="default" class="bh-color-gray-3 " style="margin-top:20px;color:#666666;font-size:14px;">暂无外出申请~</mt-text>
+                            </mt-layout-container>
+
+                            <mt-text type="default" style="text-align: center;" class="bh-color-gray-3 OPjfbvuua8" v-if="!loadMore && hasWcsqData">没有更多了~</mt-text>
+
+                        </mt-layout-container>
+                    </mt-layout-container>
+
+
+                </mt-tab-container-item>
+
+            </mt-tab-container>
+        </mt-layout-container>
+
+    </mt-layout-container>
+</mt-layout-container>

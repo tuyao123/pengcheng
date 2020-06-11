@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <!--/公共jsp -->
+    
+
+
+
+
+
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<!-- 用来禁止浏览器缓存，使得每次请求test.html都从服务器下载最新版本 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta name="format-detection" content="telephone=yes">
+
+<script>
+        var SERVER_PATH = "//jdres.xjtu.edu.cn";
+        var pageMeta = {"datas":{},"models":[],"routes":{},"params":{"curDate":"2020-05-24 14:25:05","userId":"4119101068","userName":"屠尧","roleId":"e700f0d51e224789b582801505ee6ed9"}} ;
+        var contextPath = "/xsfw";
+        var rootPath = "/xsfw";
+        rootPath = rootPath.replace("http:", window.location.protocol);
+        rootPath = rootPath.replace(":80/", window.location.port+"/");
+        rootPath = rootPath.replace(":443/", window.location.port+"/");
+        var hostPath = "http://eps.xjtu.edu.cn:80/xsfw";
+        hostPath = hostPath.replace("http:", window.location.protocol);
+        hostPath = hostPath.replace(":80/", window.location.port+"/");
+        hostPath = hostPath.replace(":443/", window.location.port+"/");
+        var path ="/xsfw";
+        path = path.replace("http:", window.location.protocol);
+        path = path.replace(":80/", window.location.port+"/");
+        path = path.replace(":443/", window.location.port+"/");
+        window.WIS_CONFIG = {
+            ROOT_PATH: rootPath,
+            PATH: path,
+            APPID: "5819277804583044",
+            APPNAME: "swmfxyqglapp",
+            RES_SERVER: "//jdres.xjtu.edu.cn",
+            HOST_PATH:hostPath
+        }
+        window.WIS_CONFIG.STATIC_TIMESTAMP = "v";
+        var userId = pageMeta.params.userId;
+        var roleId = pageMeta.params.roleId;
+        window.APP_CONFIG = {};
+        var SWROOT_PATH = "http://eps.xjtu.edu.cn:80/xsfw/sys/swpubapp";
+</script>
+
+<link rel="stylesheet" href="//jdres.xjtu.edu.cn/bh_components/mobile/1.0.0/bh-lib.min.css">
+<link rel="stylesheet" href="//jdres.xjtu.edu.cn/fe_components/iconfont_mobile/iconfont.css">
+<link rel="stylesheet" href="public/css/style.css">
+<link rel="stylesheet" href="../../swpubapp/public/mob/css/mob.css">
+<link rel="stylesheet" href="//jdres.xjtu.edu.cn/fe_components/skins/mint2.0/skin.css">
+<link rel="stylesheet" href="//jdres.xjtu.edu.cn/fe_components/mobile/MINT/style.min.css">
+<link rel="stylesheet" href="//jdres.xjtu.edu.cn/bower_components/cropper/cropper.min.css">
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js?v=1590244971188"></script>
+<script src="//jdres.xjtu.edu.cn/bower_components/requirejs/require.js?v=1590244971188"></script>
+<script src="../../swpubapp/public/mob/js/mobutil.js?v=1590244971188"></script>
+<script src="../../swpubapp/public/mob/js/spriteFrame.js?v=1590244971188"></script>
+<script src="//jdres.xjtu.edu.cn/bower_components/qrcode.js/qrcode.js?v=1590244971188"></script>
+<script src="//jdres.xjtu.edu.cn/fe_components/mobile/bh_utils_mobile.js?v=1590244971188"></script>
+
+
+    <script>
+		var curDate = pageMeta.params.curDate;
+		var userName = pageMeta.params.userName;
+		var sftoon = navigator.userAgent.toLowerCase().indexOf("toongine")!=-1;
+	</script>
+	<style type="text/css">
+
+/* 定义keyframe动画，命名为blink */
+@keyframes blink{
+  0%{opacity: 1;}
+  100%{opacity: 0;} 
+}
+/* 添加兼容性前缀 */
+@-webkit-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-moz-keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@-ms-keyframes blink {
+    0% {opacity: 1; } 
+    100% { opacity: 0;}
+}
+@-o-keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+/* 定义blink类*/
+.blink{
+    color: #dd4814;
+    animation: blink 1s linear infinite;  
+    /* 其它浏览器兼容性前缀 */
+    -webkit-animation: blink 1s linear infinite;
+    -moz-animation: blink 1s linear infinite;
+    -ms-animation: blink 1s linear infinite;
+    -o-animation: blink 1s linear infinite;
+}
+.detailmore{
+color: #52C7CA;
+float:right;
+line-height:50px;
+font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+	
+<div id="selectrole">
+	<!-- 路由出口 -->
+	<!-- 路由匹配到的组件将渲染在这里 -->
+	<router-view></router-view>
+</div>
+<div id="app">
+	<!-- 路由出口 -->
+	<!-- 路由匹配到的组件将渲染在这里 -->
+	<keep-alive>
+		<router-view v-if="$route.meta.keepAlive"></router-view>
+	</keep-alive>
+	<router-view v-if="!$route.meta.keepAlive"></router-view>
+</div>
+</body>
+
+</html>

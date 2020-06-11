@@ -1,0 +1,1515 @@
+<html lang="zh-CN"><head>
+    <!--/公共jsp -->
+
+<title>交大校园码</title>
+
+
+
+
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<!-- 用来禁止浏览器缓存，使得每次请求test.html都从服务器下载最新版本 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="format-detection" content="telephone=yes">
+
+<style>
+#time{
+font-family: 'Roboto-Bold', 'Roboto Bold', 'Roboto', sans-serif;
+font-size: 28px;
+font-weight: 650;
+color: #000000;
+padding:-2 0 0;
+margin:2 5 5 5;
+position:absolute;
+top:208px;
+background-color: #fff;
+left:19px;
+z-index:9999;
+font-style: normal;
+}
+</style>
+
+	<style>
+#time1{
+font-family: 'Roboto-Bold', 'Roboto Bold', 'Roboto', sans-serif;
+font-size: 36px;
+font-weight: 650;
+color: #000000;
+padding:-2 0 0;
+margin:2 5 5 5;
+position:absolute;
+background-color: #fff;
+top:201px;
+left:165px;
+z-index:9999;
+font-style: normal;
+}
+</style>
+
+<script>
+        var SERVER_PATH = "./jdres.xjtu.edu.cn";
+        var pageMeta = {"datas":{},"models":[],"routes":{},"params":{"curDate":"2020-05-24 17:55:53","userId":"4119101068","userName":"屠尧","roleId":"e700f0d51e224789b582801505ee6ed9"}} ;
+        var contextPath = "./eps.xjtu.edu.cn/xsfw";
+        var rootPath = "./eps.xjtu.edu.cn/xsfw";
+
+        var hostPath = "./eps.xjtu.edu.cn/xsfw";
+
+        var path ="./eps.xjtu.edu.cn/xsfw";
+
+        window.WIS_CONFIG = {
+            ROOT_PATH: rootPath,
+            PATH: path,
+            APPID: "5819277804583044",
+            APPNAME: "swmfxyqglapp",
+            RES_SERVER: "./jdres.xjtu.edu.cn",
+            HOST_PATH:hostPath
+        }
+        window.WIS_CONFIG.STATIC_TIMESTAMP = "v";
+        var userId = pageMeta.params.userId;
+        var roleId = pageMeta.params.roleId;
+        window.APP_CONFIG = {};
+        var SWROOT_PATH = "./eps.xjtu.edu.cn/xsfw/sys/swpubapp";
+</script>
+
+<link rel="stylesheet" href="./jdres.xjtu.edu.cn/bh_components/mobile/1.0.0/bh-lib.min.css">
+<link rel="stylesheet" href="./jdres.xjtu.edu.cn/fe_components/iconfont_mobile/iconfont.css">
+<link rel="stylesheet" href="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/public/css/style.css">
+<link rel="stylesheet" href="./eps.xjtu.edu.cn/xsfw/sys/swpubapp/public/mob/css/mob.css">
+<link rel="stylesheet" href="./jdres.xjtu.edu.cn/fe_components/skins/mint2.0/skin.css">
+<link rel="stylesheet" href="./jdres.xjtu.edu.cn/fe_components/mobile/MINT/style.min.css">
+<link rel="stylesheet" href="./jdres.xjtu.edu.cn/bower_components/cropper/cropper.min.css">
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js?v=1590244971188"></script>
+<script src="./jdres.xjtu.edu.cn/bower_components/requirejs/require.js?v=1590244971188"></script>
+<script src="./eps.xjtu.edu.cn/xsfw/sys/swpubapp/public/mob/js/mobutil.js?v=1590244971188"></script>
+<script src="./eps.xjtu.edu.cn/xsfw/sys/swpubapp/public/mob/js/spriteFrame.js?v=1590244971188"></script>
+<script src="./jdres.xjtu.edu.cn/bower_components/qrcode.js/qrcode.js?v=1590244971188"></script>
+<script src="./jdres.xjtu.edu.cn/fe_components/mobile/bh_utils_mobile.js?v=1590244971188"></script>
+
+
+    <script>
+		var curDate = pageMeta.params.curDate;
+		var userName = pageMeta.params.userName;
+		var sftoon = navigator.userAgent.toLowerCase().indexOf("toongine")!=-1;
+	</script>
+	<style type="text/css">
+
+/* 定义keyframe动画，命名为blink */
+@keyframes blink{
+  0%{opacity: 1;}
+  100%{opacity: 0;}
+}
+/* 添加兼容性前缀 */
+@-webkit-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-moz-keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@-ms-keyframes blink {
+    0% {opacity: 1; }
+    100% { opacity: 0;}
+}
+@-o-keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+/* 定义blink类*/
+.blink{
+    color: #dd4814;
+    animation: blink 1s linear infinite;
+    /* 其它浏览器兼容性前缀 */
+    -webkit-animation: blink 1s linear infinite;
+    -moz-animation: blink 1s linear infinite;
+    -ms-animation: blink 1s linear infinite;
+    -o-animation: blink 1s linear infinite;
+}
+.detailmore{
+color: #52C7CA;
+float:right;
+line-height:50px;
+font-size: 12px;
+}
+</style>
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery" src="./jdres.xjtu.edu.cn/bower_components/jquery/dist/jquery.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="vue" src="./jdres.xjtu.edu.cn/bower_components/vue2/vue.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="vueRouter" src="./jdres.xjtu.edu.cn/bower_components/vue2/vue-router.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="MINT" src="./jdres.xjtu.edu.cn/fe_components/mobile/MINT/index.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="axios" src="./jdres.xjtu.edu.cn/bower_components/vue2/axios.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="spriteUtils" src="./eps.xjtu.edu.cn/xsfw/sys/swpubapp/public/mob/js/spriteUtil.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="draggable" src="./jdres.xjtu.edu.cn/bower_components/vuedraggable/vuedraggable.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="cropper" src="./jdres.xjtu.edu.cn/bower_components/cropper/cropper.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="emap-mobile" src="./jdres.xjtu.edu.cn/fe_components/mobile/emap-mobile.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="emapMin" src="./eps.xjtu.edu.cn/xsfw/sys/swpubapp/public/mob/js/emapMin.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="pagelog" src="./jdres.xjtu.edu.cn/fe_components/sentry/sentry.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="sortable" src="./jdres.xjtu.edu.cn/bower_components/sortable/1.5.1/Sortable.min.js"></script><style type="text/css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style><style type="text/css">
+.bh-avatar-upload[data-v-19abc8d6] {
+    display: inline-block;
+}
+.bh-emapAvatar-upload[data-v-19abc8d6] {
+    position: relative;
+    display: block;
+}
+.bh-emapAvatar-upload input[data-v-19abc8d6]{
+    opacity: 0;
+    position:absolute;
+    top:0;
+    left:0;
+}
+.avatar-buttons[data-v-19abc8d6] {
+    width:100%;
+    position: absolute;
+    /* bottom: 0; */
+    right: 0;
+}
+.avatar-button[data-v-19abc8d6] {
+    width:50%;
+    float:left;
+}
+</style><style type="text/css">
+.emapm-form textarea,.emapm-form input,.emapm-form span{
+    font-family: "PingFang SC","Microsoft YaHei","Times New Roman";
+}
+.emapm-form .mint-cell-group > .emapm-item .mint-cell:first-child .mint-cell-wrapper {
+    border-top: .5PX solid #e8e8e8;
+}
+.emapm-form .mint-cell .mint-cell-value {
+    padding: 8px 0;
+}
+.emapm-form .select-value {
+     text-align: left; /* form 人事 孙新 add by jbxu 2018-11-26 */
+}
+.emapm-item {
+    position: relative;
+}
+.emapm-item .mint-field .mint-cell-value.mt-color-grey-lv3 input {
+    color: inherit;
+}
+.emapm-form .mint-cell-group .emapm-item:first-child .mint-cell-wrapper {
+    border-top: none;
+}
+/* .emapm-form .mint-cell-group-title {
+    padding: 16px 20px 16px;
+    font-size: 16px;
+    line-height: 16px;
+}
+.emapm-form .mint-cell-group-title:before {
+    content: "｜";
+    color: #52C7CA;
+    font-size: 12px;
+    position: relative;
+    top: -2px;
+    left: -4px;
+}
+
+.emapm-form .cellgroup-title-hidden .mint-cell-group-title:before {
+    content: "";
+    font-size: 0
+} */
+.emapm-form .mint-cell-group-title {
+    /* font-weight: 600;
+    color: #1E2329; */
+    padding: 12px 20px 12px;
+}
+
+
+
+
+/* .emapm-form.emapm-form-readonly .mint-hairline--top-bottom {
+    position: inherit !important;
+} */
+.emapm-form input::-webkit-input-placeholder {
+    font-weight: 400 !important;
+}
+.emapm-form input::-webkit-input-placeholder {
+    font-weight: 400 !important;
+}
+.emapm-form input::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    font-weight: 400 !important;
+}
+.emapm-form input:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    font-weight: 400 !important;
+}
+.emapm-form input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    font-weight: 400 !important;
+}
+.emapm-form input {
+    font-weight: 400 !important;
+}
+.emapm-form input:focus {
+    font-weight: 400 !important;
+}
+
+
+
+
+/* 只读表单样式设置区 */
+
+/* .emapm-form.emapm-form-readonly .mint-cell-group-title::before{
+    content: ''
+} */
+.emapm-form.emapm-form-readonly .mint-cell-group-title {
+    padding: 16px 20px 16px;
+    font-size: 16px;
+    line-height: 16px;
+    color: #1E2329;
+    background-color: #fff !important;
+    /* padding: 10px 20px 10px;
+    font-size: 14px;
+    line-height: 14px;
+    color: #92969c; */
+}
+.emapm-form.emapm-form-readonly .emapm-items {
+    /* margin-bottom:10px;
+    border-top: solid 1px #f4f4f4;*/
+}
+.emapm-form.emapm-form-readonly .mint-cell-group .mint-cell-group-content .emapm-item .mint-cell {
+    min-height:0px;
+    padding:6px 0;
+}
+.emapm-form.emapm-form-readonly .mint-cell-group .mint-cell-group-content .emapm-item .mint-cell .mint-cell-wrapper{
+    border-top-style: none;
+    font-size: 14px;
+}
+.emapm-form.emapm-form-readonly .mint-cell .mint-cell-value {
+    padding: 0;
+}
+.emapm-form.emapm-form-readonly .mint-cell .mint-cell-value .em-select-value,.emapm-form.emapm-form-readonly .mint-cell .mint-cell-value .mt-cell-diy-span {
+    color: #1E2329 !important;
+}
+.emapm-form.emapm-form-readonly .mint-cell-group-content {
+    /* padding-top:16px; */
+    padding-bottom:10px;
+}
+.emapm-form.emapm-form-readonly .mint-hairline--top-bottom:after {
+    border-bottom-width:1px;
+    border-top-width:0;
+    border-color:#e8e8e8;
+}
+.emapm-form.emapm-form-readonly .mint-cell-group .emap-cellgroup-hastitle + .mint-cell-group-content .emapm-item:first-child {
+    padding-top:10px;
+    border-top:solid 1px #f4f4f4;
+}
+.emapm-form.emapm-form-readonly .mint-cell-group .emap-cellgroup-notitle {
+    /* border-bottom:solid 1px #f4f4f4; */
+    padding: 0;
+}
+.emapm-form.emapm-form-readonly .mint-cell-group .emap-cellgroup-notitle + .mint-cell-group-content .emapm-item:first-child{
+    /* border-top:solid 1px #f4f4f4; */
+    padding-top:16px;
+}
+.emapm-form.emapm-form-readonly .em-select-value,.emapm-form.emapm-form-readonly .mt-cell-diy-span {
+    line-height: 16px;
+}
+.emapm-form.emapm-form-readonly .emapm-divide {
+    height:10px;border-bottom: solid 1px #f4f4f4;
+}
+</style><style type="text/css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style><style type="text/css">
+.__em-textarea textarea[readonly="readonly"] {
+    resize: none;
+}
+.emapm-form.emapm-form-readonly  .mint-cell-group .mint-cell-group-content .emapm-item .__em-textarea  .mint-cell .mint-cell-wrapper{
+    align-items:baseline !important;
+}
+/* .emapm-form.emapm-form-readonly  .mint-cell-group .mint-cell-group-content .emapm-item .__em-textarea.__em-textarea-readonly {
+    background-color:#345678;
+} */
+/* .__em-textarea .mint-cell-wrapper {
+    align-items: baseline;
+} */
+.__em-textarea .mint-textarea .mint-cell-wrapper .mint-cell-value{
+    width:100%;
+}
+.mt-cell-diy-span {
+    word-break: break-all;
+    /* text-align: right; */
+}
+</style><style type="text/css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style><style type="text/css">
+.selector-pick-container .mint-box-group .mint-cell-group .mint-cell-group-content .mint-cell:first-child .mint-cell-wrapper[data-v-6c673692]{
+    border-top:none;
+}
+</style><style type="text/css">
+.vf-h {
+    overflow: hidden !important;
+}
+</style><style type="text/css">
+.mint-selected-footer.__emapm[data-v-5b3d36f0] {
+    z-index: 2;
+    position: absolute;
+}
+.mint-selected-footer-list-mask[data-v-5b3d36f0] {
+    background-color: rgba(0, 0, 0, .5);
+}
+.mint-selected-footer-list-container[data-v-5b3d36f0]{
+    background-color: white;
+}
+</style><style type="text/css">
+.slip-enter-active[data-v-1e05a942],
+.slip-leave-active[data-v-1e05a942] {
+    transition: transform .25s
+}
+.slip-enter[data-v-1e05a942],
+.slip-leave-to[data-v-1e05a942] {
+    transform: translateX(100%);
+}
+.selector-pick-container[data-v-1e05a942] {
+    position: fixed;
+    width: 100vw;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background-color: #f9f9f9;
+    z-index: 999;
+}
+</style><style type="text/css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style><style type="text/css">
+.emapm-date-picker .mint-picker-column__frame {
+    position: absolute;
+}
+</style><style type="text/css">
+.__em-selectlist .mint-picker-column__frame {
+    position: absolute;
+}
+.__em-selectlist .__em-selectlist-group {
+    max-height: 250px;
+    overflow: auto;
+}
+</style><style type="text/css">
+.emapm-upload-imgs[data-v-a912844a] {
+    padding-bottom: 0px;
+}
+</style><style type="text/css">
+.confirm_btn_class {
+    font-size: 14px;
+}
+.cancel_btn_class {
+    font-size: 14px;
+}
+</style><style type="text/css">
+.bh-upload-wrap[data-v-615b2308] {
+    position: relative;
+    /* overflow: hidden; */
+    width: 100%;
+    /* display: flex!important; */
+}
+.bh-upload_required[data-v-615b2308]{
+    color: red;
+}
+.upload_item[data-v-615b2308] {
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+    margin: 0px 8px 12px 0;
+    position: relative;
+    vertical-align: top;
+}
+.upload_item_none[data-v-615b2308]{
+    line-height: 75px;
+    margin: 0;
+}
+.cancel_upload_img[data-v-615b2308] {
+    position: absolute;
+    top: -13px;
+    right: -7px;
+    font-size: 18px;
+}
+.upload_img[data-v-615b2308] {
+    width: 75px;
+    height: 75px;
+}
+.upload_img_wrong[data-v-615b2308]{
+    width: 100px;
+    margin: 0;
+    line-height: 75px;
+}
+.bh-upload-wrap .color-pdf[data-v-615b2308] {
+    color: #F26666;
+}
+.bh-upload-wrap .color-doc[data-v-615b2308] {
+    color: #4A90E2;
+}
+.bh-upload-wrap .color-xlsx[data-v-615b2308] {
+    color: #A2D06B;
+}
+.bh-upload-wrap .color-ppt[data-v-615b2308] {
+    color: #F26666;
+}
+.bh-upload-wrap .color-zip[data-v-615b2308] {
+    color: #92969C;
+}
+.bh-upload-wrap .color-others[data-v-615b2308] {
+    color: #FFB950;
+}
+
+</style><style type="text/css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style><style type="text/css">
+.__em-attachment-list[data-v-5a88c570] {
+    padding-left: 1px;
+}
+.__em-attachment-list .iconfont[data-v-5a88c570] {
+    font-size: 32px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+.__em-attachment-list-title[data-v-5a88c570] {
+    padding:8px 0;
+    /* font-size:14px; */
+}
+.__em-attachment-list .file-info[data-v-5a88c570] {
+    flex: 1;
+}
+.__em-attachment-list .color-pdf[data-v-5a88c570] {
+    color: #F26666;
+}
+.__em-attachment-list .color-doc[data-v-5a88c570] {
+    color: #4A90E2;
+}
+.__em-attachment-list .color-xlsx[data-v-5a88c570] {
+    color: #A2D06B;
+}
+.__em-attachment-list .color-ppt[data-v-5a88c570] {
+    color: #F26666;
+}
+.__em-attachment-list .color-zip[data-v-5a88c570] {
+    color: #92969C;
+}
+.__em-attachment-list .color-others[data-v-5a88c570] {
+    color: #FFB950;
+}
+.__em-file-info_size[data-v-5a88c570] {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #92969C;
+}
+.__em-file-info[data-v-5a88c570] {
+    width: calc(100% - 40px)
+}
+.__em-file-info>p[data-v-5a88c570] {
+    margin: 0;
+    padding: 1px 0 0 0;
+}
+.__em-file-info .__em-file-info_name[data-v-5a88c570] {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: 4px;
+}
+.__em-img-icon[data-v-5a88c570] {
+    height: 32px;
+    width:30px;
+    margin-right: 8px;
+}
+/* 只读表单下的设置 */
+.emapm-form.emapm-form-readonly .__em-attachment-list[data-v-5a88c570] {
+    /* border-top-width: 1px;
+    border-top-style: solid;
+    padding: 8px 0 8px 1px;
+    border-color: #E8E8E8; */
+}
+.emapm-form.emapm-form-readonly .__em-attachment-list-title[data-v-5a88c570] {
+    padding:6px 0;
+    font-size:14px;
+}
+.emapm-form.emapm-form-readonly .__em-attachment-list[data-v-5a88c570] {
+    padding-left: 0px;
+}
+</style><style type="text/css">
+.__em-attachment-list .mint-cell-title {
+    display: flex;
+    align-items: center;
+}
+</style><style type="text/css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="publicVueComponent/auditprocess/auditProcess" src="./eps.xjtu.edu.cn/xsfw/sys/swpubapp/public/mob/component/auditprocess/auditProcess.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="publicVueComponent/nonedatas/nonedatas" src="./eps.xjtu.edu.cn/xsfw/sys/swpubapp/public/mob/component/nonedatas/nonedatas.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="text" src="./jdres.xjtu.edu.cn/bower_components/text/text.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/jdxym/jdxym" src="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/jdxym/jdxym.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/fxsq" src="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/fxsq.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/add/addFxsq" src="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/add/addFxsq.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/add/cns" src="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/add/cns.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/add/jlgj" src="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/add/jlgj.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/add/fxxc" src="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/add/fxxc.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/add/jkda" src="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/add/jkda.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/add/editMrqk" src="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/add/editMrqk.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/view/viewFxsq" src="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/view/viewFxsq.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/view/viewjkda" src="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/view/viewjkda.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/view/viewfxxc" src="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/view/viewfxxc.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/view/viewjlgj" src="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/view/viewjlgj.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/view/viewcns" src="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/view/viewcns.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/view/vieweditMrqk" src="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/fxsq/view/vieweditMrqk.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/wcsq/wcsq" src="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/wcsq/wcsq.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/zmsq/zmsq" src="./eps.xjtu.edu.cn/xsfw/sys/swmfxyqglapp/default/modules/zmsq/zmsq.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="api" src="./api.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="BH_MOBILE" src="./jdres.xjtu.edu.cn/fe_components/mobile/BH_MIXIN_SDK.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="home" src="./eps.xjtu.edu.cn/xsfw/sys/swpubapp/public/mob/component/home/home.js"></script></head>
+
+<body>
+
+
+<div id="app"><!----> <div class="mint-layout-container"><div class="mint-layout-container fxyq_fxsq fxyq_wcsq" style="margin-bottom: 60px;"><div class="mint-layout-container"><div class="sq-xslbdm-yjs"><div class="mint-layout-container bh-bg-color-light xszp_image"><img src="./image1/tuyao.do" class="mint-image" style="width: 100px; height: 130px; margin: 3px;"></div> <div class="xsxx" style="width: calc(100vw - 160px);"><div>3118301288&nbsp;朱鹏程
+	         	 	<span style="font-size: 14px; margin-left: 10px;">研究生</span></div> <div>机械工程学院/王芬班</div></div></div> <div class="mint-layout-container modal-bak" style="display: none;"><div class="mint-text mt-color-grey" style="text-align: center; font-size: 18px; color: rgb(19, 21, 45); line-height: 22px; padding-top: 20px;"><span class="mint-icon" style="color: red; position: relative; top: 3px;"><i class="iconfont mint-icon-i icon-erroroutline" style="font-size: 30px;"></i></span>
+			            未安排返校
+			</div> <div class="mint-text mt-color-grey" style="font-size: 14px; color: rgb(118, 122, 140); line-height: 20px; padding: 30px; text-align: center;">学校暂未安排您进行返校，请耐心等待学校安排!</div></div> <div class="mint-layout-container" style="display: none;"><div style="background-color: white; padding-bottom: 100px; min-height: 500px;"><div style="padding: 10px 0px 0px 25px;"><div class="jkmgxsj-title">当前时间：</div> <div><span class="jkmgxsj-rq"></span> <span class="jkmgxsj-sj">.</span></div></div> <div style="line-height: 30px; padding-top: 4px; padding-left: 25px; font-size: 14px;">
+		     		外出时间
+		     		<span style="color: rgb(255, 185, 80);">2020-05-25 08:02</span> <span style="">至</span> <span style="color: rgb(255, 185, 80);">2020-05-25 20:02</span></div> <div class="mint-text mt-color-grey" style="line-height: 20px;">&nbsp;&nbsp;</div> <div style="border: 1px solid rgb(232, 232, 232); width: 250px; height: 240px; margin-left: calc(50vw - 130px); margin-bottom: 8px; position: relative;"><div style="width: 170px; height: 170px; display: inline-block; margin: 40px 40px 20px;"><div id="apply_school_code" style="margin: 10px;"></div></div> <div style="position: absolute; top: 0px; display: none;"><img src="./image1/xsjkm_bg.png" class="mint-image" style="height: 30px;"></div> <div style="position: absolute; top: 0px;"><img src="./image1/xsjkm_bg1.png" class="mint-image" style="height: 30px;"></div> <div style="position: absolute; top: 0px; display: none;"><img src="./image1/xsjkm_bg2.png" class="mint-image" style="height: 30px;"></div> <div style="position: absolute; top: 0px; line-height: 31px; font-size: 16px; color: white; left: 35px;">
+			     		研究生
+			     	</div></div> <!----> <!----> <!----> <!----> <div style="padding-top: 0px; text-align: center; font-size: 14px;">
+		     		校园最安全，外出有风险
+		     	</div> <div style="padding-top: 2px; text-align: center; font-size: 14px;">
+		     		外出进行科研工作的
+		     	</div> <div class="mint-text header mt-color-grey" style="padding-top: 30px; display: none;">初始校园码</div></div></div> <div class="mint-layout-container OPjczlssvm" style=""><div style="background-color: white; padding-bottom: 100px; min-height: 500px;"><div style="padding: 10px 0px 0px 25px;"><div class="jkmgxsj-title">当前时间：</div> <div><span class="jkmgxsj-rq"></span> <span class="jkmgxsj-sj">.</span></div></div> <div style="line-height: 30px; padding-top: 4px; padding-left: 25px; font-size: 12px; display: none;">
+		     		尚未完成报到登记，请于
+		     		<span style="color: rgb(255, 185, 80);">2020-05-23</span> <span style="display: none;">至</span> <span style="color: rgb(255, 185, 80); display: none;">2020-05-23</span>
+		     		到校报到
+		     	</div> <div style="line-height: 30px; padding-top: 8px; padding-left: 25px; font-size: 14px;">
+		     		已于&nbsp;2020-05-07 16:47:11&nbsp;完成报到登记
+		     	</div> <div style="line-height: 30px; padding-top: 4px; padding-left: 25px; font-size: 14px;">
+		     		外出时间
+		     		<span style="color: rgb(255, 185, 80);">2020-05-25 09:02</span> <span style="">至</span> <span style="color: rgb(255, 185, 80);">2020-08-25 21:02</span></div> <div class="mint-text mt-color-grey" style="line-height: 30px; display: none;">&nbsp;&nbsp;</div> <div class="mint-text mt-color-grey" style="line-height: 5px;">&nbsp;&nbsp;</div> <div style="border: 1px solid rgb(232, 232, 232); width: 250px; height: 240px; margin-left: calc(50vw - 130px); margin-bottom: 8px; position: relative;"><div style="width: 170px; height: 170px; display: inline-block; margin: 40px 40px 20px;"><div id="applyed_school_code" title="               A2C2369E7CE352CFE053E207310A2D92               " style="margin: 10px;"><canvas width="150" height="150" style="display: none;"></canvas><img alt="Scan me!" src="data:image/png;base64,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" style="display: block;"></div></div> <div style="position: absolute; top: 0px; display: none;"><img src="./image1/xsjkm_bg.png" class="mint-image" style="height: 30px;"></div> <div style="position: absolute; top: 0px;"><img src="./image1/xsjkm_bg1.png" class="mint-image" style="height: 30px;"></div> <div style="position: absolute; top: 0px; display: none;"><img src="./image1/xsjkm_bg2.png" class="mint-image" style="height: 30px;"></div> <div style="position: absolute; top: 0px; line-height: 31px; font-size: 16px; color: white; left: 35px;">
+			     		研究生
+			     	</div></div> <!----> <!----> <!----> <!----> <div style="padding-top: 0px; text-align: center; font-size: 14px;">
+		     		校园最安全，外出有风险
+		     	</div> <div style="padding-top: 2px; text-align: center; font-size: 14px;">
+		     		跨校区学习、科研、生活的
+		     	</div> <div style="padding-top: 2px; text-align: center; font-size: 14px; color: rgb(146, 150, 156); margin-bottom: 20px; display: none;">
+		     		请到校后向学校办理人员出示此二维码
+		     	</div></div></div></div></div> <div class="mint-tabbar mt-bg-lv3 mt-bColor-grey-lv6 is-fixed"><a class="mint-tab-item is-selected "><div class="mint-tab-item-icon"><i class="iconfont mt-color-theme icon-daibanshiyiicon"></i><!----><!----></div><div class="mint-tab-item-label mt-color-theme">
+        交大校园码
+      </div><!----></a><a class="mint-tab-item"><div class="mint-tab-item-icon"><i class="iconfont mt-color-grey-lv3 icon-daibanshiyiicon"></i><!----><!----></div><div class="mint-tab-item-label mt-color-grey-lv3">
+        返校申请
+      </div><!----></a><a class="mint-tab-item"><div class="mint-tab-item-icon"><i class="iconfont mt-color-grey-lv3 icon-daibanshiyiicon"></i><!----><!----></div><div class="mint-tab-item-label mt-color-grey-lv3">
+        外出申请
+      </div><!----></a><a class="mint-tab-item"><div class="mint-tab-item-icon"><i class="iconfont mt-color-grey-lv3 icon-daibanshiyiicon"></i><!----><!----></div><div class="mint-tab-item-label mt-color-grey-lv3">
+        转码申请
+      </div><!----></a></div></div></div>
+
+
+
+<div class="mint-indicator" style="display: none;"><div class="mint-indicator-wrapper" style="padding: 15px;"><span class="mint-indicator-spin"><div class="mint-spinner-snake" style="border-top-color: rgb(214, 214, 214); border-left-color: rgb(214, 214, 214); border-bottom-color: rgb(214, 214, 214); height: 32px; width: 32px;"></div></span><span class="mint-indicator-text" style="display: none;"></span></div><div class="mint-indicator-mask"></div></div>
+<script language="javascript">
+function showtime()
+{
+var today,hour,second,minute,year,month,date;
+var strDate ;
+   today=new Date();
+var n_day = today.getDay();
+switch (n_day)
+{
+case 0:{
+strDate = "星期日"
+}break;
+case 1:{
+strDate = "星期一"
+}break;
+case 2:{
+strDate ="星期二"
+}break;
+case 3:{
+strDate =  "星期三"
+}break;
+case 4:{
+strDate =  "星期四"
+}break;
+case 5:{
+strDate =  "星期五"
+}break;
+case 6:{
+strDate =  "星期六"
+}break;
+case 7:{
+strDate =  "星期日"
+}break;
+}
+year = today.getYear();
+month = today.getMonth()+1;
+month=month>9?month:"0"+month;
+date = today.getDate();
+date=date>9?date:"0"+date;
+hour = today.getHours();
+hour=hour>9?hour:"0"+hour;
+minute =today.getMinutes();
+minute=minute>9?minute:"0"+minute;
+second = today.getSeconds();
+second=second>9?second:"0"+second;
+document.getElementById('time').innerHTML = month + "月" + date + "日";
+setTimeout("showtime();", 1000);
+}
+</script>
+
+<script language="javascript">
+function showtime1()
+{
+var today,hour,second,minute,year,month,date;
+var strDate ;
+   today=new Date();
+var n_day = today.getDay();
+switch (n_day)
+{
+case 0:{
+strDate = "星期日"
+}break;
+case 1:{
+strDate = "星期一"
+}break;
+case 2:{
+strDate ="星期二"
+}break;
+case 3:{
+strDate =  "星期三"
+}break;
+case 4:{
+strDate =  "星期四"
+}break;
+case 5:{
+strDate =  "星期五"
+}break;
+case 6:{
+strDate =  "星期六"
+}break;
+case 7:{
+strDate =  "星期日"
+}break;
+}
+year = today.getYear();
+month = today.getMonth()+1;
+month=month>9?month:"0"+month;
+date = today.getDate();
+date=date>9?date:"0"+date;
+hour = today.getHours();
+hour=hour>9?hour:"0"+hour;
+minute =today.getMinutes();
+minute=minute>9?minute:"0"+minute;
+second = today.getSeconds();
+second=second>9?second:"0"+second;
+document.getElementById('time1').innerHTML = hour + ":" + minute + ":" + second;
+setTimeout("showtime1();", 1000);
+}
+</script>
+
+<div id="time"></div>
+<script language="javascript"> showtime();</script>
+<div id="time1"></div>
+<script language="javascript"> showtime1();</script>
+</body></html>

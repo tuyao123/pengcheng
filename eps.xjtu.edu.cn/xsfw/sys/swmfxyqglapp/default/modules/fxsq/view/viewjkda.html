@@ -1,0 +1,44 @@
+<mt-layout-container class="addfxsq_cns fxyq_fxsq">
+    <div style=" color: #43454F;font-size: 12px;background-color: rgba(255, 234, 203, 1);line-height: 30px;padding: 0 20px;">
+        健康档案状态:
+        <span v-show="noDays>0 || jkdays<14">
+			<span style="color: #FF7949;">异常<span  v-show="noDays>0">（存在{{noDays}}天未填写），</span></span>
+        请完成档案并确认！
+        </span>
+        <span v-show="noDays == 0 && jkdays==14" style="color: #4FC033;">正常</span>
+    </div>
+
+    <emapm-form :model="model" v-model="formValue" ref="form" :readonly="readonly">
+    </emapm-form>
+
+    <div v-for="jkda in jkdaList" @click="editDayJkda(jkda.RQ)" class="sdys_div bh-bg-color-light" style="padding: 0 20px;">
+        <div class="sdys_left" style="width: calc(100vw - 80px);">
+            <div class="sdys_leftup">
+                {{jkda.RQ}}<span v-show="jkda.SJD">({{jkda.SJD_DISPLAY}})</span>
+                <mt-button v-show="!jkda.TBSJ" class="sdys_leftup_btn">未填写</mt-button>
+                <mt-button v-show="!!jkda.TBSJ" class="sdys_leftup2_btn">已填写</mt-button>
+            </div>
+            <div class="sdys_leftdown" v-show="jkda.SFFX">
+                是否返校：{{jkda.SFFX_DISPLAY}}
+            </div>
+            <div class="sdys_leftmiddle" style="color: #767A8C;font-size:12px;">
+                填写时间:<span>{{jkda.TBSJ_2}}</span>
+                <span class="sdys_leftdown_span" style="margin-left: 8px;" v-if="jkda.JKZM">(补填)</span>
+            </div>
+            <div class="sdys_leftdown">
+                健康状态：
+                <span v-show="!jkda.SFFRHKS" style="color: #FF9901;font-size: 12px;">未填</span>
+                <span v-show="jkda.SFFRHKS && jkda.SFJK == '1'" style="color: #4FC033;font-size: 12px;">正常</span>
+                <span v-show="jkda.SFFRHKS && jkda.SFJK == '0'" style="color: #FF7949;font-size: 12px;">异常</span>
+            </div>
+        </div>
+        <div style="display: inline-block;vertical-align: top;">
+            <mt-icon size="20px" name="icon-keyboardarrowright" class="bh-color-gray-3 xgtxbr" style="line-height: 77px;">
+            </mt-icon>
+        </div>
+    </div>
+
+    <div style="height: 100px; padding: 20px 0;">
+        <mt-button @click="sureJkda" class="cns_sure_btn">确认</mt-button>
+    </div>
+</mt-layout-container>

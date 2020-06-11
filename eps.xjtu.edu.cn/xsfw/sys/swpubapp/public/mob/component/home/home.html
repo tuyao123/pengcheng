@@ -1,0 +1,8 @@
+<mt-layout-container>
+    <router-view style="margin-bottom: 60px;"></router-view>
+    <mt-tabbar v-model="homeSelectedTab" fixed>
+        <mt-tab-item @click.native="changePage(page)" v-for="page in pageList" :id="page.name" :icontype="page.meta.indexIcon">
+            {{page.meta.indexName}}
+        </mt-tab-item>
+    </mt-tabbar>
+</mt-layout-container>

@@ -1,0 +1,177 @@
+<mt-layout-container class="fxyq_fxsq">
+    <div style="background-color: rgba(255, 234, 203, 1);padding:0 10px;" v-show="sfhmszbwz">
+        <div style="height:30px;">
+            </span>
+            <div style="color: #FF7949;float:left;line-height:30px;font-size: 14px;"><span class="iconfont icon-erroroutline">请到每日健康报填报处进行补填</div>
+				</div>
+			</div>
+	<mt-layout-container>
+		<mt-layout-container class="modal-bak" v-show="showPage == '0'">
+	     	<mt-text style="text-align:center;font-size: 18px;color: #13152D;line-height: 22px;padding-top: 20px;">
+		        <mt-icon size="30px" name="icon-erroroutline" class="" style="color: red;position: relative;top: 3px;">
+			    </mt-icon>
+			            未安排返校
+			</mt-text>
+	     	<mt-text style="font-size: 14px;color: #767A8C;line-height: 20px;padding: 30px;text-align: center;">学校暂未安排您进行返校，请耐心等待学校安排!</mt-text>
+		</mt-layout-container>
+		<mt-layout-container class="modal-bak" v-show="showPage == '02'">
+			<div v-show="!!settingInfo.JKZT" style="margin-left:calc(50vw - 85px);width:170px;height:170px;margin-top: 50px;border: 1px solid rgba(239, 239, 239, 1);">
+	     		<div id="no_school_code" style="margin:10px;"></div>
+	     	</div>
+	     	<mt-text style="font-size: 14px;color: #767A8C;line-height: 20px;padding: 30px;text-align: center;">红码不允许返校，请联系辅导员！</mt-text>
+			<mt-text style="font-size: 14px;color: #FF7949;line-height: 20px;text-align: center;">
+			{{settingInfo.redMsg}}
+			</mt-text>
+		</mt-layout-container>
+		<mt-layout-container class="modal-bak" v-show="showPage == '01'">
+			<div style="margin-left:calc(50vw - 85px);width:170px;height:170px;margin-top: 50px;border: 1px solid rgba(239, 239, 239, 1);">
+	     		<div id="nosqsj_school_code" style="margin:10px;"></div>
+	     	</div>
+	     	<mt-text style="text-align:center;font-size: 18px;color: #13152D;line-height: 22px;padding-top: 20px;">
+		        <mt-icon size="30px" name="icon-erroroutline" class="" style="color: red;position: relative;top: 3px;">
+			    </mt-icon>
+			    不在申请时间范围内       
+			</mt-text>
+	     	<mt-text style="font-size: 14px;color: #767A8C;line-height: 20px;padding: 30px;text-align: center;">请于{{settingInfo.SQKSRQ}}至{{settingInfo.SQJSRQ}}范围内申请返校!</mt-text>
+		</mt-layout-container>
+		<mt-layout-container class="" v-show="showPage == '1'">
+			<div class="" style="background-color: white;height: calc(100vh);">
+	            <div style="padding:20px;">
+		            <mt-text class="header">返校告知书</mt-text>
+		            <mt-text v-show="settingInfo.FXKSRQ != settingInfo.FXJZRQ" class="fxsj">安排返校日期：{{settingInfo.FXKSRQ}}至{{settingInfo.FXJZRQ}}</mt-text>
+		            <mt-text v-show="settingInfo.FXKSRQ == settingInfo.FXJZRQ" class="fxsj">安排返校日期：{{settingInfo.FXKSRQ}}</mt-text>
+		            <div v-show="showcode == '1'" >
+				     	<!-- <div style="margin-left:calc(50vw - 105px);width:170px;height:170px;margin-bottom: 30px;border: 1px solid rgba(239, 239, 239, 1);">
+				     		<div id="yellow_school_code" style="margin:10px;"></div>
+				     	</div> -->
+				     	<div id="yellow_school_sm" style="text-align:left;font-size: 12px;color: #ffb950;margin-bottom: 20px;">您的健康每日报数据有漏填或者其他异常，请申请返校时对漏填数据进行补填，并提供证明材料</div>
+				     </div>
+		            <mt-text v-html="settingInfo.FXTZ" class="fxts xssq_html_fwb">{{settingInfo.FXTZ}}</mt-text>
+		        </div>
+		        <mt-cell-group>
+				    <mt-checkbox v-model="checkValue" :disabled="checkDisable" >
+			            	<span style="font-size:12px">我已阅读返校通知,如实填报</span><span v-show="checkDisable" style="font-size:12px;color:#FFB950">({{settingInfo.FXTZYDSJ}}S)</span>
+                </mt-checkbox>
+                </mt-cell-group>
+
+                <div style="height: 100px;padding: 20px 0;">
+                    <mt-button @click="toOutTimeApply" :disabled="!checkValue" class="fxyq_outtime_btnspan">我要改期返校</mt-button>
+                    <mt-button v-show="settingInfo.SFZH != '1'" @click="toOnTimeApply" :disabled="!checkValue" class="fxyq_save_btnspan" style="margin-left: 20px;float: left;">我可以按期返校</mt-button>
+                    <mt-button v-show="settingInfo.SFZH == '1'" @click="toOnTimeApply" :disabled="!checkValue" class="fxyq_save_btnspan" style="margin-left: 20px;float: left;">我要申请返校</mt-button>
+                </div>
+            </div>
+</mt-layout-container>
+
+<mt-layout-container class="OPjczlssvm" v-show="showPage == '2' || showPage == '3' || showPage == '4' || showPage == '5' ||showPage == '6'">
+    <div :class="{ 'sq-xslbdm-bks':settingInfo.XSLBDM=='3','sq-xslbdm-yjs' :settingInfo.XSLBDM=='2', 'sq-xslbdm-lxs':settingInfo.XSLBDM=='5'}">
+        <mt-layout-container class="bh-bg-color-light xszp_image">
+            <!-- <mt-image v-show="!!settingInfo.XSZPURL.fileUrl" :src="settingInfo.XSZPURL.fileUrl" style="width:80px;height:80px;-webkit-border-radius: 50%;    margin: 3px;" :watermark="false">
+		             </mt-image>
+		             <mt-image v-show="!!!settingInfo.XSZPURL.fileUrl" src="../public/images/none.png" style="width:80px;height:80px;-webkit-border-radius: 50%;    margin: 3px;" :watermark="false">
+		             </mt-image> -->
+            <mt-image :src="settingInfo|autoPhoto" style="width:100px;height:130px; margin: 3px;" :watermark="false">
+            </mt-image>
+        </mt-layout-container>
+        <div class="xsxx" style="width: calc(100vw - 160px);">
+            <div class="">{{settingInfo.XH}}&nbsp;{{settingInfo.XM}}
+                <span style="font-size: 14px;margin-left: 10px;">{{settingInfo.XSLBDM_DISPLAY}}</span>
+            </div>
+            <div class="">{{settingInfo.DWDM_DISPLAY}}/{{settingInfo.BJDM_DISPLAY}}</div>
+            <div @click="toSqxx" class="" style="margin-top: 20px;">查看申请信息 >></div>
+        </div>
+    </div>
+    <!--  <mt-text @click="toSqxx" class="cksqxx">查看申请信息</mt-text> -->
+    <div v-show="showPage == '2'" style="margin-top:10px;background-color:white;margin-bottom: 100px;min-height: 400px;">
+        <apply-process :processDatas="applyProcessDatas" :currentState="applyDetailShzt" :sqsj="applyDetailSqsj2" :thzt="applyDetailThzt" :sfkch="applyDetailSfkch"></apply-process>
+    </div>
+
+    <div v-show="showPage == '3'" style="background-color:white;margin-top: 0px;padding-bottom: 100px;min-height: 500px;">
+        <div style="padding: 10px 0 0 25px;">
+            <div class="jkmgxsj-title">当前时间：</div>
+            <div><span class="jkmgxsj-rq">{{sjrq}}</span> <span class="jkmgxsj-sj">{{sjsj}}</span></div>
+        </div>
+        <div v-show="(settingInfo.SHZT =='99'  && settingInfo.SFJX !='1' && settingInfo.JKZT != '1')" style="line-height:30px;padding-top: 8px;padding-left:25px;;font-size: 12px;">
+            尚未完成报到登记，请于
+            <span style="color:#ffb950;">{{settingInfo.FXKSRQ}}</span>
+            <span v-show="settingInfo.FXKSRQ != settingInfo.FXJZRQ">至</span>
+            <span v-show="settingInfo.FXKSRQ != settingInfo.FXJZRQ" style="color:#ffb950;">{{settingInfo.FXJZRQ}}</span> 到校报到
+        </div>
+        <div v-show="(settingInfo.SFJX =='1')" style="line-height:30px;padding-top: 8px;padding-left:25px;;font-size: 14px;">
+            已于&nbsp;{{settingInfo.JXSJ}}&nbsp;完成报到登记
+        </div>
+        <mt-text v-show="settingInfo.SFJX !='1' && settingInfo.SFQC != '1' && settingInfo.JKZT == '1'" style="color: #FF7949;line-height:30px;padding-top: 20px;padding-left:25px;font-size: 14px;">
+            <mt-icon size="20px" name="icon-erroroutline" class="" style="color: red;position: relative;top: 3px;">
+            </mt-icon>
+            红码不允许返校，请联系辅导员
+        </mt-text>
+        <!-- <div style="border: 1px solid #e8e8e8;width: 260px;height: 250px;margin-left: calc(50vw - 130px);position: relative;">
+					<div style="width:170px;height:170px;display: inline-block;margin: 50px 40px 20px 40px;">
+			     		<div id="in_school_code" style="margin:10px;"></div>
+			     	</div>
+			     	<div style="position: absolute;top: 0;" v-show="settingInfo.XSLBDM=='3'">
+			     		<mt-image src="../public/images/xsjkm_bg.png" style="height: 30px;" :watermark="false">
+				     	</mt-image>
+			     	</div>
+			     	<div style="position: absolute;top: 0;" v-show="settingInfo.XSLBDM=='2'">
+			     		<mt-image src="../public/images/xsjkm_bg1.png" style="height: 30px;" :watermark="false">
+				     	</mt-image>
+			     	</div>
+			     	<div style="position: absolute;top: 0;" v-show="settingInfo.XSLBDM=='5'">
+			     		<mt-image src="../public/images/xsjkm_bg2.png" style="height: 30px;" :watermark="false">
+				     	</mt-image>
+			     	</div>
+			     	<div style="position: absolute;top: 0;line-height: 31px;font-size: 16px;color: white;left: 35px;">
+			     		{{settingInfo.XSLBDM_DISPLAY}}
+			     	</div>
+			    </div> -->
+        <mt-text v-show="redmsgFlag" style="font-size: 14px;color: #FF7949;line-height: 20px;text-align: center;margin-bottom: 20px;">
+            <!-- {{settingInfo.redMsg}} -->
+            <span v-show="!!settingInfo.GLDD_EK">隔离地点：{{settingInfo.GLDD_EK_DISPLAY}}</span>
+        </mt-text>
+        <!-- <div v-show="(settingInfo.SFQC == '1' || settingInfo.JKZT != '1') && sfyjxdet" style="text-align:center;font-size: 14px;color: #92969C;margin-bottom: 20px;">
+		     		请到校后向学校办理人员出示此二维码
+		     	</div> -->
+        <!-- <div style="text-align:center;font-size: 13px;color: #92969C;line-height: 40px;" @click="refreshCode">
+		     		(健康码更新于{{settingInfo.DQRQ}})
+		     		<mt-icon name="icon-shuaxin" color="#2196F3"></mt-icon>
+		     	</div> -->
+        <mt-button v-if="settingInfo.SFJX != '1'" @click="toZhrx" class="fxyq_fxsq_btn" style="margin-top:180px;">暂缓入校</mt-button>
+    </div>
+
+    <div v-show="showPage == '4'" style="margin-top:10px;background-color:white;padding-bottom: 100px;min-height: 400px;">
+        <apply-process :processDatas="applyProcessDatas" :currentState="applyDetailShzt" :sqsj="applyDetailSqsj" :thzt="applyDetailThzt" :sfkch="applyDetailSfkch"></apply-process>
+        <mt-button @click="toReapply" class="fxyq_fxsq_btn" style="margin-top:50px;">重新申请</mt-button>
+    </div>
+
+    <div v-show="showPage == '5'" style="margin-top:10px;background-color:white;padding-bottom: 100px;min-height: 400px;">
+        <mt-image src="../public/images/shz.png" style="margin-top:30px;margin-top:20px;margin-left: calc(50vw - 88px);" :watermark="false">
+        </mt-image>
+        <mt-text style="font-size: 16px;color: #FFB950;text-align: center;margin-bottom: 50px;">改期返校</mt-text>
+        <mt-button @click="toReapply" class="fxyq_fxsq_btn" style="margin-top:50px;">重新申请</mt-button>
+    </div>
+
+    <div v-show="showPage == '6'" style="margin-top:10px;background-color:white;padding-bottom: 100px;min-height: 400px;">
+        <!-- 退回的申请展示退回提示 -->
+        <div v-if="sfth">
+            <mt-text style="font-size: 12px;color: #f97e3a;text-align: center;margin-bottom: 5px;">管理员退回申请</mt-text>
+            <mt-text style="font-size: 12px;color: #f97e3a;text-align: center;margin-bottom: 0px;">退回原因：{{thyy}}</mt-text>
+        </div>
+        <apply-process :processDatas="applyProcessDatas" :currentState="applyDetailShzt" :sqsj="applyDetailSqsj" :thzt="applyDetailThzt" :sfkch="applyDetailSfkch"></apply-process>
+        <mt-button @click="toReapply" class="fxyq_fxsq_btn" style="margin-top:20px;">继续申请</mt-button>
+    </div>
+</mt-layout-container>
+
+<mt-popup v-model="popupZhrx" position="bottom">
+    <div @click="cancelDelay" class="closeBtn">&times;</div>
+    <div style="font-size: 18px;color: #13152D;line-height: 22px;text-align:center;">原因说明</div>
+    <div style="font-size: 12px;color: #FFB950;padding: 10px;text-align:center;">若选择暂缓入校，则需要重新提交审批～</div>
+    <emapm-form :model="zhrxmodel" v-model="zhrxValue" :custom-vm="customVm" ref="form" :readonly="readonly">
+    </emapm-form>
+    <div style="margin-bottom:10px;">
+        <mt-button @click="cancelDelay" class="zhrx_cancel_btn">取消</mt-button>
+        <mt-button @click="delayEnterSchool" class="zhrx_sure_btn">确定</mt-button>
+    </div>
+</mt-popup>
+</mt-layout-container>
+
+</mt-layout-container>
